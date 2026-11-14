@@ -32,6 +32,7 @@ a { color: inherit; text-decoration: none; }
 .cart-button { gap: 8px; padding: 7px 0; font-size: 11px; }
 .cart-button svg { width: 19px; }
 .cart-count { min-width: 19px; height: 19px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: #fff; font-size: 9px; }
+.account-button { max-width: 130px; overflow: hidden; padding: 8px 13px; border: 1px solid #d8d7ce; background: transparent; color: var(--ink); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
 .mobile-menu { display: none; }
 .hero { position: relative; min-height: 500px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 53px 10.1% 58px 12.5%; overflow: hidden; }
 .hero-copy { position: relative; z-index: 1; padding-bottom: 4px; }
@@ -137,8 +138,21 @@ h1 em, h2 em { color: var(--green); font-weight: 500; }
 .subtotal { display: flex; justify-content: space-between; font-size: 12px; }
 .cart-summary > p { margin: 9px 0 16px; color: var(--muted); font-size: 9px; }
 .checkout-button { width: 100%; height: 45px; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border: 0; background: var(--green); color: white; font-size: 10px; cursor: pointer; transition: background .2s; }
+.checkout-button:disabled { cursor: wait; opacity: .7; }
 body.cart-open { overflow: hidden; }
-
+.auth-dialog { position: relative; width: min(420px, calc(100% - 32px)); max-width: none; max-height: min(90vh, 680px); padding: 36px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); box-shadow: 0 20px 70px #1719142b; }
+.auth-dialog::backdrop { background: #1d201b75; }
+.auth-close { position: absolute; top: 13px; right: 15px; border: 0; background: transparent; color: var(--muted); font-size: 26px; cursor: pointer; }
+.auth-dialog .eyebrow { margin-bottom: 12px; }
+.auth-dialog h2 { margin: 0 0 9px; font-family: var(--serif); font-size: 32px; font-weight: 500; letter-spacing: -.8px; line-height: 1.2; }
+.auth-description { margin: 0 0 23px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.auth-field { display: grid; gap: 7px; margin-bottom: 15px; color: #55574f; font-size: 10px; }
+.auth-field input { width: 100%; height: 42px; padding: 0 11px; border: 1px solid #deddd5; outline: 0; background: #fffefa; color: var(--ink); font-size: 12px; }
+.auth-field input:focus { border-color: var(--green); }
+.auth-error { margin: 0 0 13px; color: #a33b34; font-size: 10px; line-height: 1.5; }
+.auth-submit { margin-top: 5px; }
+.auth-switch { display: block; margin: 15px auto 0; padding: 5px; border: 0; background: transparent; color: var(--green); font-size: 10px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.auth-user-panel { padding-top: 7px; }
 @media (max-width: 900px) {
   .site-header { padding: 0 5%; }
   .hero { padding-right: 8%; padding-left: 8%; }
@@ -152,7 +166,8 @@ body.cart-open { overflow: hidden; }
   .announcement { height: 31px; font-size: 9px; }
   .site-header { height: 64px; padding: 0 5%; }
   .brand { font-size: 29px; }
-  .header-actions { gap: 12px; }
+  .header-actions { gap: 9px; }
+  .account-button { max-width: 90px; padding: 7px 9px; font-size: 9px; }
   .cart-button { gap: 5px; }
   .cart-button span:nth-child(2) { display: none; }
   .mobile-menu { width: 24px; height: 27px; display: flex; flex-direction: column; justify-content: center; gap: 5px; padding: 3px; }

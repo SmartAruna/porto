@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script id="naraAppScript" src="script.js" data-api-base="http://localhost:3000/api" defer></script>
 </head>
 <body>
   <div class="announcement">Gratis ongkir untuk pesanan pertama — <a href="#produk">belanja sekarang</a></div>
@@ -30,6 +30,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.5L22 8H6"></path><circle cx="10" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></svg>
         <span>Keranjang</span><span class="cart-count" id="cartCount">0</span>
       </button>
+      <button class="account-button" id="accountButton">Masuk</button>
       <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu" aria-expanded="false">
         <span></span><span></span>
       </button>
@@ -93,6 +94,39 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="auth-dialog" id="authDialog" aria-labelledby="authTitle">
+    <button class="auth-close" id="closeAuth" aria-label="Tutup">×</button>
+    <div id="authFormPanel">
+      <p class="eyebrow"><span class="eyebrow-line"></span> Akun NARA</p>
+      <h2 id="authTitle">Senang bertemu lagi.</h2>
+      <p class="auth-description" id="authDescription">Masuk untuk melihat keranjang dan melanjutkan belanja.</p>
+      <form id="authForm">
+        <label class="auth-field" id="nameField" hidden>
+          <span>Nama</span>
+          <input id="authName" name="name" type="text" autocomplete="name" minlength="2" maxlength="100">
+        </label>
+        <label class="auth-field">
+          <span>Email</span>
+          <input id="authEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+        </label>
+        <label class="auth-field">
+          <span>Kata sandi</span>
+          <input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="10" maxlength="128" required>
+        </label>
+        <p class="auth-error" id="authError" role="alert" hidden></p>
+        <button class="checkout-button auth-submit" id="authSubmit" type="submit">Masuk <span>↗</span></button>
+      </form>
+      <button class="auth-switch" id="authSwitch" type="button">Belum punya akun? Daftar</button>
+    </div>
+    <div class="auth-user-panel" id="authUserPanel" hidden>
+      <p class="eyebrow"><span class="eyebrow-line"></span> Akun NARA</p>
+      <h2 id="authGreeting">Halo!</h2>
+      <p class="auth-description" id="authUserEmail"></p>
+      <button class="checkout-button auth-submit" id="logoutButton" type="button">Keluar <span>↗</span></button>
+    </div>
+  </dialog>
+
   <div class="cart-overlay" id="cartOverlay" aria-hidden="true">
     <button class="overlay-backdrop" id="closeCartBackdrop" aria-label="Tutup keranjang"></button>
     <aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
